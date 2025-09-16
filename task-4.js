@@ -11,7 +11,11 @@ let word = 'меню' 
 */
 const word = prompta('Ваше слово')
 
+if (word === null || word.length === 0) {
+    throw new Error('Слово не корректно')
+}
+
 // TODO добавить логику расчета
 
-const result = 1
+const result = word.length === 2 ? 1 : 0
 console.log = {result}

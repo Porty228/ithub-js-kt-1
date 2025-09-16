@@ -18,6 +18,22 @@ let range = prompt('Введите период (month, week или day)')
 
 //дописать логику преобразования range в RU_range
 
-const formattedPrice = price.toLocaleString('ru-RU', {style:"currency", currency: "RUB"})
-const output = `${formattedPrice} в ${range}`
-console.log(output)
+if (!Number.isFinite(price) || (price <= 0)) {
+    throw new Error('Доход введен не керректно')
+}
+if ((range !== 'month') && (range !== 'week') && (range !== 'day')) {
+    throw new Error('Период задан не керректно')
+}
+
+const formattedPrice = price.toLocaleString('ru', {style:"currency", currency: "RUB"})
+
+let formattedRange 
+if (range === 'month'){
+    formattedRange = "месяц"
+} else if (range === 'week'){
+    formattedRange = "неделя"
+} else if (range === 'day'){
+    formattedRange = "день"
+}
+const result = `${formattedPrice} в ${formattedRange}`
+console.log(result)

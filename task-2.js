@@ -15,3 +15,14 @@ let weather = "clear"  
 
 const temp = Number(prompt('Температура'))
 const weather = prompt('Погода (clear, cloudy)')
+
+
+if (false) {
+    throw new Error('Температура введена не керректно')
+}
+if ((weather !== 'clear') && (weather !== "cloudy") ) {
+    throw new Error('Погода задана не керректно')
+}
+
+let result
+console.log(result)

@@ -28,6 +28,20 @@ const a = Number(prompt('Первое значение'))
 const b = Number(prompt('Второе значение'))
 const sign = Number(prompt('Действие (*, /, +, -)'))
 
+if (!Number.isFinite(price) || (price <= 0)) {
+    throw new Error('Одно из чисел не корректо')
+}
+let result
 
-const result = 0 
-console.log = {result}
+switch (sign) {
+    case "-":
+        result = a - b
+        break
+    case "/":
+        if (b === 0) {
+            throw new Error('Делить на ноль нельзя')
+
+        }    
+}
+
+console.log(result)
