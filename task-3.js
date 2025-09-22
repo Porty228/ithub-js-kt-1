@@ -24,24 +24,37 @@ let sign = "/"
 Делить на 0 нельзя! 
 */
 
-const a = Number(prompt('Первое значение'))
-const b = Number(prompt('Второе значение'))
-const sign = Number(prompt('Действие (*, /, +, -)'))
+const a = Number(prompt('Первое значение'));
+const b = Number(prompt('Второе значение'));
+const sign = prompt('Действие (*, /, +, -)'); 
 
-if (!Number.isFinite(price) || (price <= 0)) {
-    throw new Error('Одно из чисел не корректо')
+
+if (!Number.isFinite(a) || !Number.isFinite(b)) {
+    throw new Error('Одно из чисел введено некорректно');
 }
-let result
+
+let result;
+
 
 switch (sign) {
-    case "-":
-        result = a - b
-        break
-    case "/":
+    case '+':
+        result = a + b;
+        break;
+    case '-':
+        result = a - b;
+        break;
+    case '*':
+        result = a * b;
+        break;
+    case '/':
         if (b === 0) {
-            throw new Error('Делить на ноль нельзя')
-
-        }    
+            console.log('Делить на 0 нельзя!');
+            break;
+        }
+        result = a / b;
+        break;
+    default:
+        throw new Error('Неверный знак операции');
 }
 
 console.log(result)

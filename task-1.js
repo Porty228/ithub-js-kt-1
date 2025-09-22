@@ -21,19 +21,21 @@ let range = prompt('Введите период (month, week или day)')
 if (!Number.isFinite(price) || (price <= 0)) {
     throw new Error('Доход введен не керректно')
 }
-if ((range !== 'month') && (range !== 'week') && (range !== 'day')) {
+if (range !== "month" && range !== "week" && range !== "day" && range !== "день" && range !== "месяц" && range !== "неделя") {
     throw new Error('Период задан не керректно')
 }
 
 const formattedPrice = price.toLocaleString('ru', {style:"currency", currency: "RUB"})
 
 let formattedRange 
-if (range === 'month'){
-    formattedRange = "месяц"
-} else if (range === 'week'){
-    formattedRange = "неделя"
-} else if (range === 'day'){
-    formattedRange = "день"
+if (range === "month" || range === "месяц") {
+  formattedRange = "месяц";
+} else if (range === "week" || range === "неделя") {
+  formattedRange = "неделя";
+} else if (range === "day" || range === "день") {
+  formattedRange = "день";
+} else {
+  throw new Error("Период задан некорректно");
 }
 const result = `${formattedPrice} в ${formattedRange}`
 console.log(result)

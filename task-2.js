@@ -13,16 +13,30 @@ let weather = "clear"  
 "golf"
 */
 
-const temp = Number(prompt('Температура'))
-const weather = prompt('Погода (clear, cloudy)')
+const temp = Number(prompt('Температура'));
+const weatherRaw = prompt('Погода (солнечно/облачно)');
+const weather = weatherRaw.trim().toLowerCase();
 
+if (!Number.isFinite(temp)) {
+    throw new Error('Температура введена некорректно');
+}
 
-if (false) {
-    throw new Error('Температура введена не керректно')
+if (weather !== 'clear' && weather !== 'cloudy' && 
+    weather !== 'солнечно' && weather !== 'облачно') {
+    throw new Error('Погода задана некорректно')
 }
-if ((weather !== 'clear') && (weather !== "cloudy") ) {
-    throw new Error('Погода задана не керректно')
-}
+
 
 let result
+
+if (temp >= 25 && (weather === 'clear' || weather === 'солнечно')) {
+    result = 'гольф';
+} else if (((temp >= 10 && temp <= 24) || 
+            (weather === 'cloudy' || weather === 'облачно'))) {
+    result = 'боулинг';
+} else {
+    result = 'поход';
+}
+
 console.log(result)
+
